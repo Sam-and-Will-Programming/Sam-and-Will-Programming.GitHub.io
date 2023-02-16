@@ -7,17 +7,6 @@
 -----
 ## Jenny Logs Preview
 
-```HubotAI 2023-02-15
-AVA-Request += "startup.satif" %% "bennyHubotAI" % "(v2.0.0)"
-AVA-Request += "jenny.dataset.satif" %%% "jennyHubotAI" % "(v6 0.00.19B)"
-startup complete
-
-HubotAI 2023-02-16
-AVA-Request += "runThrough.satif" %% "bennyHubotAI" % "(v2.0.0)"
-AVA-Request += "systemDATA.py" %% "bennyHubotAI" % "(v2.0.0)"
-file AVA update (%13:21%)
-file AVA update (%13:30%)
-file AVA update (%13:30%) finish
-AVA-Received += "antivirusMain.satif" %% "jennyHubotAI" % "(v6 0.00.19B)"
+```HubotAI 2023-02-16
 logs == void(github)
 ```
