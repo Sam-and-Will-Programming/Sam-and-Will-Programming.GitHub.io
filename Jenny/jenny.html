@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<head>
-  <title>jenny Hubot terminal</title>
- <style>
-  p {color:green;}
-</style>
-</head>
-<body style="background-color:black;">
-<p style="font-family:'Courier New'">Jenny Hubot AI</p>
-  <p style="font-family:'Courier New'">History from date (13/02/23) ...</p>
-<p style="font-family:'Courier New'">last startup record = ?? (13/02/23) ...</p>
-<p style="font-family:'Courier New'">setting up jenny (13/02/23) ...</p>
-<p style="font-family:'Courier New'">setting up jenny/system (13/02/23) ...</p>
-<p style="font-family:'Courier New'">checking system data (13/02/23) ...</p>
-<p style="font-family:'Courier New'">verifying system clock (13/02/23) ...</p>
-<p style="font-family:'Courier New'">verified match (13/02/23) ...</p>
-<p style="font-family:'Courier New'">processing system files (13/02/23) ...</p>
-<p style="font-family:'Courier New'">translating system files (13/02/23 ...</p>
-<p style="font-family:'Courier New'">blocking access points (13/02/23) ...</p>
-<p style="font-family:'Courier New'">proccessing responce (13/02/23) ...</p>
-<p style="font-family:'Courier New'">ping responce reserved (13/02/23) ...</p>
-<p style="font-family:'Courier New'">ping responce valid (13/02/23) ...</p>
-<p style="font-family:'Courier New'">ser00001@will-graves: sudo apt remove hiro-block</p>
-<p style="font-family:'Courier New'">reading package list... Done</p>
-<p style="font-family:'Courier New'">building dependency tree... Done</p>
-<p style="font-family:'Courier New'">file removed (13/02/23) ...</p>
-<p style="font-family:'Courier New'">log updated (13/02/23) ...</p>
-<p style="font-family:'Courier New'">log updated (14/02/23) ...</p>
-<p style="font-family:'Courier New'">log updated (15/02/23) ...</p>
-<p style="font-family:'Courier New'">log updated (16/02/23) ...</p>
+<html>
+<body>
+
+<audio id="myAudio">
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="horse.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<p>Click the buttons to play or pause the audio.</p>
+
+<button onclick="playAudio()" type="button">Play Audio</button>
+<button onclick="pauseAudio()" type="button">Pause Audio</button> 
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+
+function pauseAudio() { 
+  x.pause(); 
+} 
+</script>
+
 </body>
 </html>
