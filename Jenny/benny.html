@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Untited</title>
-<style>
+<script>
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
@@ -554,6 +554,373 @@ const App = () => {
 }
 
 ReactDOM.render(<App />, document.getElementById("root"))
+</script>
+<style>
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Additional Resets
+# CSS Variables (Used since they play well with HSL)
+# Body Styles
+# Component Styles
+    - hud-card
+    - card (hud-card background)
+    - svg (outlines)
+# Pen Controls Component Styles
+# Pen Styles
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+ # Additional Resets
+    - Fieldset and legend reset from:  https://codepen.io/absolutholz/pen/jWgBMo
+--------------------------------------------------------------*/
+legend {
+    display: table;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    + * {
+        clear: both;
+    }
+}
+
+fieldset {
+    border: 0;
+    padding: 0.01em 0 0 0;
+    margin: 0;
+    min-width: 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+    display: table-cell;
+}
+
+textarea, button {
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*--------------------------------------------------------------
+ # CSS Variables (Used since they play well with HSL)
+--------------------------------------------------------------*/
+:root {
+    --primary100: 183, 100%, 25%;
+    --primary200: 183, 100%, 50%;
+    --primary300: 183, 100%, 75%;
+    --neutral100: 240, 100%, 7%;
+    --neutral200: 240, 32%, 17%;
+    --neutral300: 240, 32%, 26%;
+    --neutral400: 240, 32%, 35%;
+    --neutral500: 240, 32%, 40%;
+    --neutral600: 240, 32%, 60%;
+    --neutral700: 240, 32%, 80%;
+    --neutral800: 240, 32%, 96%;
+}
+
+
+/*--------------------------------------------------------------
+ # Body Styles
+--------------------------------------------------------------*/
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    font-family: "Rajdhani", sans-serif;
+    line-height: 1.5;
+    background-color: hsl(var(--neutral100));
+    color: hsl(var(--neutral700));
+}
+
+
+/*--------------------------------------------------------------
+ # Component Styles
+    - hud-card
+    - card
+    - svg (outlines)
+--------------------------------------------------------------*/
+
+.hud-card {
+    &__container {
+        position: relative;
+    }
+    &__background {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    &__grid {
+        display: grid;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+    }
+}
+
+.card {
+    background: linear-gradient(130deg, hsla(var(--primary200), .2), hsla(var(--neutral100), 0));
+    height: 100%;
+    width: 100%;
+
+    /** Backdrop filter adds that nice Glassmorphism effect if there are background elements **/
+    -webkit-backdrop-filter: blur( .5px );
+    backdrop-filter: blur( .5px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+@keyframes glow {
+    0%, 100% {
+        stroke-width: 3px;
+    }
+    50% {
+        stroke-width: 6px;
+    }
+}
+
+.svg {
+    overflow: visible;
+
+    &__stroke {
+        fill: none;
+        stroke-miterlimit: 10;
+
+        &--glow {
+            stroke-width: 3px;
+            animation-name: glow;
+            stroke: hsla(var(--primary200), .5);
+        }
+        
+        &--bottom {
+            stroke-width: 1.5px;
+            stroke: hsl(var(--primary200));
+        }
+
+        &--top {
+            stroke-width: 1px;
+            stroke: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+
+/*--------------------------------------------------------------
+ # Pen Controls Component Styles
+    - form
+    - field
+    - textarea
+    - checkbox
+    - button
+    - expand-card
+--------------------------------------------------------------*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    &__title {
+        color: hsl(var(--neutral800));
+        font-weight: 600;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+
+    &__contents {
+        &--textarea {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+        
+        &--checkbox {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+    }
+}
+
+.textarea {
+    border-bottom: 2px solid hsl(var(--neutral400));
+    resize: none;
+    width: 100%;
+    transition: border 0.25s;
+    color: hsl(var(--neutral800));
+
+    &::placeholder {
+        color: hsl(var(--neutral700));
+    }
+
+    &:focus {
+        border-bottom: 2px solid hsl(var(--primary300));
+        outline: none;
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.checkbox {
+    line-height: 1;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    gap: 0.5rem;
+    padding: .175rem 0 0 .175rem;
+
+    &__wrapper {
+        > * {
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked + .checkbox__check .checkbox__svg {
+            path {
+                stroke: hsl(var(--primary300));
+                stroke-width: 1.5px;
+                animation: dash 2s ease-out forwards;
+            }
+            border: 1px solid hsl(var(--primary300));
+        }
+    }
+
+    &__svg {
+        box-sizing: content-box;
+        overflow: visible;
+        padding: .25rem;
+        border-radius: .125rem;
+        transform: scale(1.25);
+        background: linear-gradient(145deg, hsla(var(--primary300), .2), hsla(var(--primary300), 0));
+        transition: border .25s;
+        border: 1px solid hsl(var(--neutral500));
+        
+        path {
+            stroke: transparent;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+    }
+}
+
+.button {
+    cursor: pointer;
+    font-weight: 600;
+    color: hsl(var(--neutral100));
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    white-space: nowrap;
+
+    &__card {
+        padding: .5rem 1.25rem .4rem 1.125rem;
+        box-shadow: inset 0px 0px 9px hsl(var(--primary100));
+        transition: box-shadow .25s;
+        background: linear-gradient(to left, hsl(var(--primary100)), hsl(var(--primary200)));
+    }
+
+    &:hover .button__card, &:focus .button__card {
+        box-shadow: inset 0px 0px 13px hsl(var(--primary300));
+    }
+}
+
+.expand-card {
+    &__summary {
+        cursor: pointer;
+        transition: color 0.25s;
+        
+        &:hover {
+            color: hsl(var(--neutral800));
+        }
+    }
+    
+    &__content {
+        padding: 1rem 0;
+    }
+}
+
+
+/*--------------------------------------------------------------
+ # Pen Styles
+--------------------------------------------------------------*/
+
+.link {
+    color: inherit;
+    transition: color .25s;
+    
+    &:hover {
+        color: hsl(var(--neutral800));
+    }
+}
+
+.sr-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.example {
+    display: grid;
+    grid-template-rows: max-content 1fr min-content;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 4rem;
+
+    &__container {
+        &:first-child {
+            display: flex;
+            
+            > * {
+                max-width: 700px;
+            }
+            
+            justify-content: center;   
+        }
+        
+        &--main {
+            font-size: 2rem;
+        }
+    }
+}
 </style>
 </head>
 <body>
