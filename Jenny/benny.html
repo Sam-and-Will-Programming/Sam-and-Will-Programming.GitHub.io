@@ -1,11 +1,562 @@
 <!DOCTYPE html>
 <head>
   <title>Untited</title>
+<style>
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Card Component: Used as background (utilizes clippath)
+# SVG Outline Components: 
+    - SVG Sprites: For SVG glow animation
+    - Corner
+    - SideVertical 
+    - SideHorizontal
+# HUDCard Component
+# Example Usage of HUDCard
+# Pen Components
+# Pen Controls
+# App
+--------------------------------------------------------------*/
+
+import React from 'https://esm.sh/react@18.2.0'
+import ReactDOM from 'https://esm.sh/react-dom@18.2.0'
+
+const defaultCornerSize = 16
+const svgPadding = 2
+const svgCornerSize = 22
+const svgInnerCornerSize = svgCornerSize - svgPadding
+
+
+/*--------------------------------------------------------------
+ # Card Component (Background)
+ - A clippath div is used for the background. Since clippath allows for relative units, this allows the backround to stretch as needed.
+  - I originally used multiple SVGs (on a grid, like with the outline), however this causes seams on certain browsers/screen resolutions.
+--------------------------------------------------------------*/
+const Card = ({ tl, tr, bl, br, cornerSize = defaultCornerSize, customClassName, children }) => {
+    const clipPath = `polygon(` 
+        + `${tl ? `0 ${cornerSize}px, ${cornerSize}px 0,` : '0 0,'} ` 
+        + `${tr ? `calc(100% - ${cornerSize}px) 0, 100% ${cornerSize}px,` : '100% 0,'} `
+        + `${br ? `100% calc(100% - ${cornerSize}px), calc(100% - ${cornerSize}px) 100%,` : '100% 100%,'}  `
+        + `${bl ? `${cornerSize}px 100%, 0 calc(100% - ${cornerSize}px)` : '0 100%'})`;
+
+    return (
+        <div className={customClassName} style={{clipPath}}>
+            {children}
+        </div>
+    )
+}
+
+/*--------------------------------------------------------------
+ # SVG Outline Components: 
+    - SVG Sprites: For SVG glow animation
+    - Corner
+    - SideVertical 
+    - SideHorizontal
+--------------------------------------------------------------*/
+const SVGSprites = () => (
+    <>
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true"
+            style={{ 
+                    position: "absolute", 
+                        width: "0", 
+                            height: "0", 
+                                overflow: "hidden" 
+                }}
+            viewBox="0 0 200 200" 
+            preserveAspectRatio="none">
+            <defs>
+                <filter 
+                    id="glow--corner" 
+                    x="-125%" 
+                    y="-125%" 
+                    height="400%" 
+                    width="400%">
+                    <feGaussianBlur 
+                        in="SourceGraphic" 
+                        stdDeviation="4" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            style={{ 
+                position: "absolute", 
+                    width: "0", 
+                        height: "0", 
+                            overflow: "hidden" 
+            }}
+            viewBox="0 0 200 200" 
+            preserveAspectRatio="none">
+            <defs>
+                <filter 
+                    id="glow--line" 
+                    filterUnits="userSpaceOnUse" 
+                    x="-100%" 
+                    y="-100%" 
+                    height="300%"
+                    width="300%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+                </filter>
+            </defs>
+        </svg>
+    </>
+)
+
+const getAnimationStyles = ({ length, delay }) => ({
+    animationDuration: `${length}ms`,
+    animationDelay: `${delay}ms`,
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear'
+})
+
+const Corner = ({ rotation, animation, isClipped, cornerSize = defaultCornerSize }) => {
+    const path = 
+          isClipped ? 
+          `M22,2h-${svgInnerCornerSize - cornerSize}l-${cornerSize},${cornerSize}v${svgInnerCornerSize - cornerSize}` : "M22,2H2,2V22";
+
+    return (
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            height="100%" 
+            width="100%" 
+            viewBox="0 0 22 22"
+            className="svg" 
+            style={{ transform: `rotate(${rotation}deg)` }}>
+             <path 
+                className="svg__stroke svg__stroke--glow" 
+                d={path} style={animation && getAnimationStyles(animation)} 
+                filter="url(#glow--corner)" />
+            <path 
+                className="svg__stroke svg__stroke--bottom" 
+                d={path} />
+            <path 
+                className="svg__stroke svg__stroke--top" 
+                d={path} />
+        </svg>
+    )
+}
+
+const SideHorizontal = ({ rotation, animation, filterWidth = 60 }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        height="100%" 
+        width="100%" 
+        viewBox={`0 0 ${filterWidth} 22`} 
+        preserveAspectRatio="none"
+        className="svg" 
+        style={{ transform: `rotate(${rotation}deg)` }}>
+        <line 
+            className="svg__stroke svg__stroke--glow" 
+            x1={filterWidth} 
+            y1="2" 
+            y2="2" 
+            filter="url(#glow--line)"
+            style={animation && getAnimationStyles(animation)} />
+        <line 
+            className="svg__stroke svg__stroke--bottom" 
+            x1={filterWidth} 
+            y1="2" 
+            y2="2" />
+        <line 
+            className="svg__stroke svg__stroke--top" 
+            x1={filterWidth} 
+            y1="2" 
+            y2="2" />
+    </svg>
+)
+
+const SideVertical = ({ rotation, animation, filterHeight = 16 }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        height="100%" 
+        width="100%" 
+        viewBox={`0 0 22 ${filterHeight}`} 
+        preserveAspectRatio="none"
+        className="svg" 
+        style={{ transform: `rotate(${rotation}deg)` }}>
+        <line 
+            className="svg__stroke svg__stroke--glow" 
+            x1="2" 
+            x2="2" 
+            y2={filterHeight} 
+            filter="url(#glow--line)"
+            style={animation && getAnimationStyles(animation)} />
+        <line 
+            className="svg__stroke svg__stroke--bottom" 
+            x1="2" 
+            x2="2" 
+            y2={filterHeight} />
+        <line 
+            className="svg__stroke svg__stroke--top" 
+            x1="2" 
+            x2="2" 
+            y2={filterHeight} />
+    </svg>
+)
+
+
+/*--------------------------------------------------------------
+ # HUDCard Component: 
+ 
+     ## How it works
+      - Corner and Side pieces are put together in a 3x3 grid. 
+      - A div is supplied in the middle of the grid for any children/content.
+      - Sides are allowed to scale either horizontally or vertically, while Corners maintain size.
+      - Card component is use as a background and is absolutely positioned behind grid.
+--------------------------------------------------------------*/
+
+const HUDCard = ({ tl, tr, bl, br, children, animation, cornerSize = defaultCornerSize, filterHeight, filterWidth}) => {
+
+    const maxCornerSize = 20
+    const adjustedCornerSize = cornerSize <= maxCornerSize ? cornerSize : maxCornerSize;
+
+    return (
+        <div className="hud-card__container">
+
+            {/*Clippath background*/}
+            <div 
+                className="hud-card__background" 
+                style={{padding: `${svgPadding}px` }}>
+                <Card 
+                    customClassName="card" 
+                    tl={tl} 
+                    tr={tr} 
+                    bl={bl} 
+                    cornerSize={cornerSize} />
+            </div>
+
+            {/*Outline put together using grid*/}
+            <div 
+                className="hud-card__grid" 
+                style={{
+                    gridTemplateColumns: `${svgCornerSize}px minmax(0px, auto) ${svgCornerSize}px`,
+                        gridTemplateRows: `${svgCornerSize}px minmax(0px, auto) ${svgCornerSize}px`
+                }}>
+
+                {/* Top Row*/}
+                <Corner 
+                    cornerSize={adjustedCornerSize} 
+                    rotation={0} 
+                    isClipped={tl} 
+                    animation={animation} />
+                <SideHorizontal 
+                    rotation={0} 
+                    animation={animation} 
+                    filterWidth={filterWidth}/>
+                <Corner 
+                    cornerSize={adjustedCornerSize} 
+                    rotation={90} 
+                    isClipped={tr} 
+                    animation={animation} />
+
+                {/* Center Row*/}
+                <SideVertical 
+                    rotation={0} 
+                    animation={animation} 
+                    filterHeight={filterHeight} />
+                <div>
+                    {children}
+                </div>
+                <SideVertical 
+                    rotation={180} 
+                    animation={animation} 
+                    filterHeight={filterHeight} />
+
+                {/* Bottom Row*/}
+                <Corner 
+                    cornerSize={adjustedCornerSize} 
+                    rotation={270} 
+                    isClipped={bl} 
+                    animation={animation} />
+                <SideHorizontal 
+                    rotation={180} 
+                    animation={animation} 
+                    filterWidth={filterWidth}/>
+                <Corner 
+                    cornerSize={adjustedCornerSize} 
+                    rotation={180} 
+                    isClipped={br} 
+                    animation={animation} />
+            </div>
+        </div>
+    )}
+
+
+/*--------------------------------------------------------------
+ # Example Usage of HUDCard: 
+ 
+    ## Params
+      - tl, tr, bl, br: Which corners are clipped
+      - cornerSize: How much corners are clipped
+      - animation: optional animation props {delay: $time, length: $time}
+      - filterHeight, filterWidth: 
+        - Due to how the height and width of SideVertical and SideHorizontal scale, to make the svg filter effect look good, the height and width of these components needs to be in the rough ballpark of how they will render (otherwise unexpected behavior can occur around the corners). 
+        - TODO: I'm planning to look into other ways of handle this issue, I believe getting the scrollHeight and scrollWidth of the HUDCard and passing it to the children would be a good way of solving this. May require a custom hook to track resizing of the component.
+--------------------------------------------------------------*/
+
+const Example = () => {
+    const {
+        corners, 
+        text
+    } = React.useContext(PenControlsContext)
+
+    return (
+        <HUDCard
+            cornerSize={16}
+            tl={corners.tl} 
+            tr={corners.tr} 
+            bl={corners.bl} 
+            br={corners.br} 
+            animation={{ length: 3000, delay: 0 }}
+            filterWidth={200}
+            filterHeight={100}
+            >
+            {text || 'A delightful responsive card component for your SCI-FI HUD projects.'}
+        </HUDCard>
+    )
+}
+
+
+/*--------------------------------------------------------------
+ # Pen Components
+    - Checkbox
+    - Button
+    - Expand Card
+--------------------------------------------------------------*/
+const Checkbox = ({label, checked, onChange}) => (
+    <label class="checkbox">
+        {label}
+
+        <input 
+            class="checkbox__input" 
+            type="checkbox" 
+            checked={checked} 
+            onChange={onChange} />
+
+        <span class="checkbox__check">
+            <svg 
+                class="checkbox__svg" 
+                width="11" 
+                height="12" 
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M 1 7 L 4 10 L 10 2" fill="none" />
+            </svg>
+        </span>
+
+    </label>
+)
+
+const Button = ({ tl, tr, bl, br, fullWidth = false, children, ...props }) => (
+    <button 
+        className="button" 
+        style={{ width: fullWidth ? '100%' : 'min-content' }} 
+        {...props}>
+        <Card 
+            tl={tl} 
+            tr={tr} 
+            bl={bl} 
+            br={br} 
+            customClassName='button__card' 
+            cornerSize={8}>
+            {children}
+        </Card>
+    </button>
+)
+
+const ExpandCard = ({title, children}) => {
+    const [isOpen, setIsOpen] = React.useState(false)
+
+    return (
+        <details className="expand-card">
+            <summary 
+                className="expand-card__summary" 
+                aria-description={isOpen ? "Collapse Content" : "Expand Content"} 
+                onClick={() => {setIsOpen(!isOpen)}}>
+                {title}
+            </summary>
+            
+            <div 
+                className="expand-card__content" 
+                style={{ display: isOpen ? 'block' : 'none' }}>
+                {children}
+            </div>
+        </details>
+    )
+}
+
+
+/*--------------------------------------------------------------
+ # Pen Controls
+    - PenControlsContext 
+    - PenControlsProvider
+    - PenCornerControls
+    - PenTextControl
+    - PenControlsForm
+--------------------------------------------------------------*/
+
+const PenControlsContext = React.createContext({
+    text: '',
+    textArea: '',
+    corners: {
+        tl: true, 
+        tr: false, 
+        bl: false, 
+        br: true
+    },
+    updateText: null,
+    handleCheckbox: null,
+    handleTextArea: null
+});
+
+const PenControlsProvider = ({children}) => {
+    const [textArea, setTextArea] = React.useState('');
+    const [text, setText] = React.useState('');
+    const [corners, setCorners] = React.useState({tl: true, tr: false, bl: false, br: true});
+
+    const handleTextArea = (e) => {
+        setTextArea(e.target.value);
+    }
+
+    const handleCheckbox = (corner) => {
+        const ret = {...corners}
+        ret[corner] = !ret[corner]
+        setCorners(ret)
+    }
+
+    const updateText = (e) => {
+        e.preventDefault();
+        setText(textArea);
+        setTextArea('');
+    }
+
+    return (
+        <PenControlsContext.Provider
+            value={{
+                text,
+                    textArea,
+                    corners,
+                    updateText,
+                    handleCheckbox,
+                    handleTextArea
+            }}>
+            {children}
+        </PenControlsContext.Provider>
+    )
+}
+
+const PenCornerControls = () => {
+    const {
+        corners, 
+        handleCheckbox
+    } = React.useContext(PenControlsContext)
+
+    return (
+        <fieldset class="field">
+            <legend class="field__label">Corners</legend>
+            <div className="field__contents--checkbox">
+                <Checkbox 
+                    checked={corners.tl} 
+                    onChange={() => handleCheckbox('tl')} 
+                    label="TL" 
+                    />
+                <Checkbox 
+                    checked={corners.tr} 
+                    onChange={() => handleCheckbox('tr')} 
+                    label="TR" 
+                    />
+                <Checkbox 
+                    checked={corners.bl} 
+                    onChange={() => handleCheckbox('bl')} 
+                    label="BL" 
+                    />
+                <Checkbox 
+                    checked={corners.br} 
+                    onChange={() => handleCheckbox('br')} 
+                    label="BR" 
+                    />
+            </div>
+        </fieldset>
+    )
+}
+
+const PenTextControl = () => {
+    const {
+        handleTextArea, 
+        textArea, 
+        updateText
+    } = React.useContext(PenControlsContext)
+
+    return (
+        <div className="field">
+            <HUDCard br 
+                filterWidth={200}
+                filterHeight={100}>
+                <label className="field__label sr-only" for="update-text">Text</label>
+                <div className="field__contents--textarea">
+                    <textarea 
+                        className="textarea" 
+                        name="update-text" 
+                        onChange={handleTextArea} 
+                        placeholder="Enter card content..."
+                        rows="4" 
+                        value={textArea} 
+                        />
+                    <Button tl br onClick={updateText}>Save</Button>
+                </div>
+            </HUDCard>
+        </div>
+    )
+}
+
+const PenControlsForm = () => {
+    return (
+        <ExpandCard title="Controls"> 
+            <form className="form"> 
+                <h2 className="form__title sr-only">Controls</h2>
+                <PenTextControl />
+                <PenCornerControls />
+            </form>
+        </ExpandCard>
+    )
+}
+
+
+/*--------------------------------------------------------------
+ # App
+--------------------------------------------------------------*/
+
+const App = () => {
+    return(
+        <div className="example">
+            <PenControlsProvider>
+                <SVGSprites />
+                <div className="example__container example__container--main">
+                    <Example />
+                </div>
+
+                <div className="example__container">
+                    <PenControlsForm />
+                </div>
+
+                <div>
+                    <a className="link" 
+                        href="https://www.linkedin.com/in/acarlie/" 
+                        rel="noreferrer noopener" 
+                        target="_blank">
+                        linkedin.com/in/acarlie
+                    </a>
+                </div>
+
+            </PenControlsProvider>
+        </div>
+    );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"))
+</style>
 </head>
-<body style="background-color:red;">
-  <p>file corrupted</p>
-<h3>ERROR 500 - internal server error</h3>
-<h6>the server responded with corrupted file due to hard disk error</h6>
-<h6>damage report returns error failed to respond. Hard disk 4 failed to return response ping</h6>
+<body>
+<div id="root"></div>
 </body>
-</html>
+</HTML>
