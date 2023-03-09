@@ -1,218 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DeveloperFolio | Developer Portfolio Template</title>
+  <title>Sam and Will Programming</title>
+  <style>
+    .content
+  z-index: 10
+  position: absolute
+  left: 0
+  top: 0
+  padding: 0
+  text-align: center
+  width: 100vw
+  height: 100vh
+
+
+.title
+  z-index: 10
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translateX(-50%) translateY(-50%)
+  font-family: "Montserrat"
+  text-align: center
+  width: 100%
+  h1
+    position: relative
+    color: #EEEEEE
+    font-weight: 800
+    font-size: 90px
+    padding: 0
+    margin: 0
+    line-height: 1
+    text-shadow: 0 0 30px #000155
+  
+
+  h3
+    font-weight: 200
+    font-size: 30px
+    padding: 0
+    margin: 0
+    line-height: 1
+    color: #EEEEEE
+    letter-spacing: 2px
+    text-shadow: 0 0 30px #000155
+    span
+      font-weight: 700
+  </style>
+  <script>
+          speedAroudme: config.speedAroudme,
+      offsetAroudme: config.offsetAroudme,
+      onCreate: function(data){
+        if( data.hero == true )
+          heros++;
+      },
+      onDead: function(data){
+        if( data.hero == true )
+          heros--;
+      }
+    }))
+  }
+  return data_particles.length
+}
+
+  function clear(){
+    canvas.globalAlpha = 0.018;
+    canvas.fillStyle = '#181719';
+    canvas.fillRect(0, 0, dimensions.width, dimensions.height);
+    canvas.globalAlpha = 1;
+  }
+
+  function update(){
+    clear();
+    data_particles = data_particles.filter(function(p) {
+      return p.move()
+    })
+    if(data_particles.length < config.maxParticles){
+      popolate(1)
+    }
+    requestAnimationFrame(update)
+  }
+
+
+setWindowSize()
+popolate(config.maxParticles)
+update()
+
+$(window).resize(setWindowSize)
+  </script>
 </head>
 <body>
-  You need to enable JavaScript to run this app.
-  <p><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google Translate"></p>
-  <h1>Original text</h1>
-  <p>Contribute a better translation</p>
-  <hr>
-  <p><a href="/">&lt; Saad Pasta /&gt;</a></p>
-  <ul>
-    <li>
-      <a href="#skills">Skills</a>
-    </li>
-    <li>
-      <a href="#experience">Work experiences</a>
-    </li>
-    <li>
-      <a href="#opensource">open source</a>
-    </li>
-    <li>
-      <a href="#achievements">achievements</a>
-    </li>
-    <li>
-      <a href="#blogs">Blogs</a>
-    </li>
-    <li>
-      <a href="#talks">Talks</a>
-    </li>
-    <li>
-      <a href="#contact">Contact me</a>
-    </li>
-    <li>
-      <a><img alt="☀️" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2600.png"></a>
-    </li>
-  </ul>
-  <h1>Hi all, I'm Saad <img alt="👋" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f44b.png"></h1>
-  <p>A passionate Full Stack Software Developer <img alt="🚀" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f680.png">having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks.</p>
-  <p><a href="https://github.com/saadpasta"></a><a href="https://www.linkedin.com/in/saadpasta/"></a><a href="mailto:saadpasta70@gmail.com"></a> <a href="https://gitlab.com/saadpasta"></a><a href="https://www.facebook.com/saad.pasta7"></a><a href="https://medium.com/@saadpasta"></a><a href="https://stackoverflow.com/users/10422806/saad-pasta"></a></p>
-  <p><a href="#contact">Contact me</a></p>
-  <p><a href="https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing">See my resume</a></p>
-  <h1>What I do</h1>
-  <p>CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK</p>
-  <ul>
-    <li>
-      <p>html-5</p>
-    </li>
-    <li>
-      <p>css3</p>
-    </li>
-    <li>
-      <p>sass</p>
-    </li>
-    <li>
-      <p>JavaScript</p>
-    </li>
-    <li>
-      <p>reactjs</p>
-    </li>
-    <li>
-      <p>nodejs</p>
-    </li>
-    <li>
-      <p>swift</p>
-    </li>
-    <li>
-      <p>npm</p>
-    </li>
-    <li>
-      <p>sql-database</p>
-    </li>
-    <li>
-      <p>aws</p>
-    </li>
-    <li>
-      <p>firebase</p>
-    </li>
-    <li>
-      <p>python</p>
-    </li>
-    <li>
-      <p>docker</p>
-    </li>
-  </ul>
-  <p><img alt="⚡" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/26a1.png">Develop highly interactive Front end / User Interfaces for your web and mobile applications</p>
-  <p><img alt="⚡" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/26a1.png">Progressive Web Applications (PWA) in normal and SPA Stacks</p>
-  <p><img alt="⚡" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/26a1.png">Integration of third party services such as Firebase/ AWS / Digital Ocean</p>
-  <h1>Proficiency</h1>
-  <p>Frontend/Design</p>
-  <p>backend</p>
-  <p>Programming</p>
-  <h1>Education</h1>
-  <p><img src="/static/media/harvardLogo.542dab89bfb35b7f5c0d.png" alt="HarvardUniversity"></p>
-  <h5>HarvardUniversity</h5>
-  <h5>Master of Science in Computer Science</h5>
-  <p>September 2017 - April 2019</p>
-  <p>Participated in the research of XXX and published 3 papers.</p>
-  <ul>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-  </ul>
-  <p><img src="/static/media/stanfordLogo.5a8e3a0a00949c93a9b8.png" alt="StanfordUniversity"></p>
-  <h5>Stanford University</h5>
-  <h5>Bachelor of Science in Computer Science</h5>
-  <p>September 2013 - April 2017</p>
-  <p>Ranked top 10% in the program. Took courses about Software Engineering, Web Security, Operating Systems, ...</p>
-  <ul>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-  </ul>
-  <h1>Experiences</h1>
-  <h5>Facebook</h5><img src="/static/media/facebookLogo.f46d68b24e9b4f73ee8b.png" alt="Facebook">
-  <h5>Software Engineer</h5>
-  <h5>June 2018 – Present</h5>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <ul>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-  </ul>
-  <h5>Quora</h5><img src="/static/media/quoraLogo.85eb29f4d52320c8ed99.png" alt="Quora">
-  <h5>Front-End Developer</h5>
-  <h5>May 2017 – May 2018</h5>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <h5>Airbnb</h5><img src="/static/media/airbnbLogo.e8497507db673acd3991.png" alt="Airbnb">
-  <h5>Software Engineer Intern</h5>
-  <h5>Jan 2015 – Sep 2015</h5>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <h1>Open Source Projects</h1>
-  <p>developerFolio</p>
-  <p>🚀 Software Developer Portfolio Template that helps you showcase your work and skills as a software developer.</p>
-  <p>JavaScript</p>
-  <p>1815</p>
-  <p>3892</p>
-  <p>25.1 MB</p>
-  <p>react-blog-github</p>
-  <p>🔥 React + Github Issues 👉 Your Personal Blog</p>
-  <p>JavaScript</p>
-  <p>135</p>
-  <p>754</p>
-  <p>34.4 MB</p>
-  <p>awesome-web-components</p>
-  <p>🤖 Awesome web components and snippets for every Front-End Developer</p>
-  <p>JavaScript</p>
-  <p>26</p>
-  <p>57</p>
-  <p>2.1 MB</p>
-  <p>Grocery-Items-Detection</p>
-  <p>🎉 Grocery Items Detection using Tenserflow.js and IBM Watson.📸</p>
-  <p>JavaScript</p>
-  <p>9</p>
-  <p>33</p>
-  <p>27 MB</p>
-  <p>PWA-Olx-Clone</p>
-  <p>Olx Clone Progressive Web App with Offline Feature, Messaging and Add to Favorite</p>
-  <p>JavaScript</p>
-  <p>14</p>
-  <p>18</p>
-  <p>3.2 MB</p>
-  <p>Locate-Me</p>
-  <p>📍A React Native live location application to find your loved one's</p>
-  <p>JavaScript</p>
-  <p>5</p>
-  <p>7</p>
-  <p>32.2 MB</p>
-  <p><a href="https://github.com/saadpasta">More Projects</a></p>
-  <h1>Big Projects</h1>
-  <p>SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH</p>
-  <p><img src="/static/media/saayaHealthLogo.60b27d1f184fadfce43a.webp" alt="saayahealth"></p>
-  <h5>Saayahealth</h5>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-  <p>Visit Website</p>
-  <p><img src="/static/media/nextuLogo.e033dbfa4c58c0a906aa.webp" alt="Nextu"></p>
-  <h5>Nextu</h5>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-  <p>Visit Website</p>
-  <h1>Achievements And Certifications <img alt="🏆" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f3c6.png"></h1>
-  <p>Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !</p>
-  <p><img src="/static/media/codeInLogo.e41a71d512efeda2a55c.webp" alt="Google Code-In Logo"></p>
-  <h5>Google Code-In Finalist</h5>
-  <p>First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.</p>
-  <p>CertificationAward LetterGoogle Code-in Blog</p>
-  <p><img src="/static/media/googleAssistantLogo.f720c71652579588524a.webp" alt="Google Assistant Action Logo"></p>
-  <h5>Google Assistant Action</h5>
-  <p>Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.</p>
-  <p>View Google Assistant Action</p>
-  <p><img src="/static/media/pwaLogo.8bf2293da0ca66249e37.webp" alt="PWA Logo"></p>
-  <h5>PWA Web App Developer</h5>
-  <p>Completed Certifcation from SMIT for PWA Web App Development</p>
-  <p>CertificationFinal Project</p>
-  <h1>Blogs</h1>
-  <p>With Love for Developing cool stuff, I love to write and teach others what I have learnt.</p>
-  <p><a href="#blog">
-  <h3>Win a Google Assistant Tshirt and $200 in Google Cloud Credits</h3>
-  <p>The template lets you choose a personality and specify the questions, answers, and configuration for the Action in a Google Sheet. Then, after completing these quick steps, you’ll have a fully working Action that you can test and submit for approval.. After creating and testing your application you have to submit it for production.. To submit your Action, do the following:. After Submitting your action for production wait for some days to get your action published.. You will receive these two emails from Google after getting your action published..</p>
-  <p>→</p></a></p>
-  <p><a href="#blog">
-  <h3>Why REACT Is The Best?</h3>
-  <p>React is a JavaScript library for building the user interface. It is maintained by Facebook and a community of individual developers and companies. React was created by Jordan Walke, a software engineer at Facebook.Facebook And Instagram Both Use React/React Native.. The Most Easiest Way To Define This&nbsp;Is. Angular is a full framework with all the tooling and best practices designed on top of&nbsp;it.. React on the other hand is just a small view library that you would need while making an&nbsp;app.</p>
-  <p>→</p></a></p>
-  <h1>TALKS</h1>
-  <p>I LOVE TO SHARE MY LIMITED KNOWLEDGE AND GET A SPEAKER BADGE <img alt="😅" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f605.png"></p>
-  <p>Build Actions For Google Assistant</p>
-  <p>Codelab at GDG DevFest Karachi 2019</p>
-  <p><a href="https://bit.ly/saadpasta-slides">Slides</a><a href="https://www.facebook.com/events/2339906106275053/">Event</a></p>
-  <h1>Podcast <img alt="🎙️" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f399.png"></h1>
-  <p>I LOVE TO TALK ABOUT MYSELF AND TECHNOLOGY</p>
-  <h1>Reach Out to me!</h1>
-  <p>Discuss a project or just want to say hi? My Inbox is open for all.</p>
-  <h2>" First Pakistani Google Code-In Finalist | Software Engineer @SadaPay | Still Finding <img alt="💭" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f4ad.png"> "</h2>
-  <p>Karachi, Pakistan</p>
-  <p>Open for opportunities: No</p>
-  <p><a href="https://github.com/saadpasta"></a><a href="https://www.linkedin.com/in/saadpasta/"></a><a href="mailto:saadpasta70@gmail.com"></a><a href="https://gitlab.com/saadpasta"></a><a href="https://www.facebook.com/saad.pasta7"></a><a href="https://medium.com/@saadpasta"></a><a href="https://stackoverflow.com/users/10422806/saad-pasta"></a></p>
-  <p><img src="https://avatars.githubusercontent.com/u/23307811?u=eab46b153eef3f5183930e61898b462447af9219&amp;v=4" alt="Saad Pasta"></p>
-  <p>Made with <img alt="❤️" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2764.png">by DeveloperFolio Team</p>
-  <p>Theme by <a href="https://github.com/saadpasta/developerFolio">developerFolio</a> <a href="https://github.com/saadpasta/developerFolio"></a></p>
+<!-- Codepen -->
+  <div class="content">
+    <div class="title">
+      <h1>WORMS</h1>
+      <h3>FUTURISTIC<span>PARTICLES</span></h3>
+    </div>
+  </div>
+  <div class="more-pens">
+    <a target="_blank" href="https://codepen.io/plasm/" class="white-mode">VIEW OTHER PENS</a>
+    <a target="_blank" href="https://codepen.io/collection/nZpPbz/" class="white-mode">VIEW OTHER PARTICLES</a>
+  </div>
+  <!-- END Codepen -->  
 </body>
 </html>
