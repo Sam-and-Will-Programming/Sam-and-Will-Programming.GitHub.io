@@ -1,111 +1,64 @@
-<!DOCTYPE html>
 <head>
-<style>
-      $notchSize 0%, 
-    100% 0%,  
-    100% calc(100% - #{$notchSize}), 
-    calc(100% - #{$notchSize}) 100%, 
-    0px 100%, 
-  );
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="generator" content="Gatsby 2.30.3">
+      <link rel="preconnect" href="https://www.google-analytics.com">
+      <link rel="dns-prefetch" href="https://www.google-analytics.com">
+      <title>Jenny</title>
+      <link data-react-helmet="true" rel="preconnect" href="https://fonts.gstatic.com">
+      <link data-react-helmet="true" rel="preconnect" href="https://fonts.googleapis.com">
+      <link data-react-helmet="true" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&amp;family=Source+Code+Pro:wght@300;400;600&amp;display=swap">
+      <meta data-react-helmet="true" name="description" content="Futuristic Sci-Fi UI Web Framework.">
+      <meta data-react-helmet="true" property="og:title" content="Arwes">
+      <meta data-react-helmet="true" property="og:site_name" content="Arwes">
+      <meta data-react-helmet="true" property="og:description" content="Futuristic Sci-Fi UI Web Framework.">
+      <meta data-react-helmet="true" property="og:type" content="website">
+      <meta data-react-helmet="true" name="twitter:card" content="summary_large_image">
+      <meta data-react-helmet="true" name="twitter:creator" content="@arwesjs">
+      <meta data-react-helmet="true" name="twitter:title" content="Arwes">
+      <meta data-react-helmet="true" name="twitter:description" content="Futuristic Sci-Fi UI Web Framework.">
+      <meta data-react-helmet="true" name="og:url" content="https://arwes.dev">
+      <meta data-react-helmet="true" name="og:image" content="https://arwes.dev/arwes.jpg">
+      <link rel="icon" href="/favicon-32x32.png?v=5bc5bf876dba78c550e7c6f9b86308a8" type="image/png">
+      <link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous">
+      <meta name="theme-color" content="#001313">
+      <link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=5bc5bf876dba78c550e7c6f9b86308a8">
+      <link as="script" rel="preload" href="/webpack-runtime-f9accf5c376b2764d32d.js">
+      <link as="script" rel="preload" href="/framework-0e20591e029376e243f5.js">
+      <link as="script" rel="preload" href="/f0e45107-2f7f42f9895a03e32992.js">
+      <link as="script" rel="preload" href="/app-102c02344435aad4ebfd.js">
+      <link as="script" rel="preload" href="/component---src-pages-index-js-2035d69cc535f91812a1.js">
+      <link as="fetch" rel="preload" href="/page-data/index/page-data.json" crossorigin="anonymous">
+      <link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous">
+      <style data-emotion="css-global" data-s=""></style>
+      <style data-emotion="css-global" data-s=""></style>
+      <style data-emotion="css trbc4e" data-s="">.css-trbc4e{position:absolute;left:0;right:0;top:0;bottom:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}</style>
+      <style data-emotion="css jlu4sl" data-s="">.css-jlu4sl{border-bottom:1px solid #00f8f8;background-color:#031b20;}</style>
+      <style data-emotion="css 154uixf" data-s="">.css-154uixf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin:0 auto;padding:10px;width:100%;max-width:1200px;line-height:30px;}@media screen and (min-width: 960px){.css-154uixf{padding:20px;}}</style>
+      <style data-emotion="css 1b36ip1" data-s="">.css-1b36ip1{display:block;margin-top:5px;}@media screen and (min-width: 960px){.css-1b36ip1{margin-top:0;}}</style>
+      <style data-emotion="css 1pcb3gr" data-s="">.css-1pcb3gr{display:inline-block;vertical-align:top;margin:0;margin-right:5px;height:25px;}@media screen and (min-width: 960px){.css-1pcb3gr{margin-right:8px;height:30px;}}</style>
+      <style data-emotion="css 1nex0tn" data-s="">.css-1nex0tn{display:inline-block;vertical-align:top;margin:0;margin-top:3px;height:20px;}@media screen and (min-width: 960px){.css-1nex0tn{margin-top:3px;height:25px;}}</style><style data-emotion="css 87ixfc" data-s="">@media screen and (max-width: 959px){.css-87ixfc{display:none;}}</style><style data-emotion="css 15q17i8" data-s="">.css-15q17i8{display:block;}.css-15q17i8 a{font-size:12px;}.css-15q17i8 a+a{margin-left:10px;}@media screen and (min-width: 960px){.css-15q17i8 a{font-size:16px;}}@media screen and (max-width: 959px){.css-15q17i8{display:none;}}</style><style data-emotion="css 1ggvict" data-s="">@media screen and (min-width: 960px){.css-1ggvict{display:none;}}</style><style data-emotion="css 1bu9d83" data-s="">.css-1bu9d83{display:block;}@media screen and (min-width: 960px){.css-1bu9d83{display:none;}}</style><style data-emotion="css etgltq" data-s="">.css-etgltq{display:inline-block;outline:none;margin:0;border:none;padding:8px 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;line-height:1;font-size:12px;text-transform:uppercase;color:#ffa76c;font-weight:normal;background-color:transparent;cursor:pointer;-webkit-transition:color 150ms ease-out;transition:color 150ms ease-out;}.css-etgltq:hover,.css-etgltq:focus{color:#ffc69f;}@media screen and (min-width: 960px){.css-etgltq{font-size:16px;}}</style><style data-emotion="css uzlwne" data-s="">.css-uzlwne{display:block;margin:auto;padding:20px;text-align:center;}</style><style data-emotion="css 1mqbpxd" data-s="">.css-1mqbpxd img{margin:0 auto 15px;width:100%;max-width:160px;}.css-1mqbpxd h1{margin:0 0 25px;font-size:42px;}.css-1mqbpxd p{margin:0 0 10px;font-size:18px;}@media screen and (min-width: 960px){.css-1mqbpxd img{max-width:180px;}}</style><style data-emotion="css m6vcm" data-s="">.css-m6vcm a+a{margin-left:10px;}</style><style data-emotion="css 1orxwfc" data-s="">.css-1orxwfc{background-color:#031b20;border-top:1px solid #00f8f8;}</style><style data-emotion="css e000y6" data-s="">.css-e000y6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin:0 auto;padding:10px;width:100%;max-width:1200px;}@media screen and (min-width: 960px){.css-e000y6{padding:10px 20px;}}</style></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="css-trbc4e"><header class="css-jlu4sl"><div class="css-154uixf"><a aria-current="page" class="css-1b36ip1" href="/"><img src="/logo.png" alt="Arwes Logotype" class="css-1pcb3gr"><img src="/logo-horizontal-text.png" alt="Arwes Logotext" class="css-1nex0tn"></a><nav class="css-15q17i8"><a href="/project">Project</a><a href="/design">Design</a><a href="/develop">Develop</a><a href="/community">Community</a><a href="https://playground.arwes.dev" target="playground">Playground</a></nav><nav class="css-1bu9d83"><button class="css-etgltq">Open Menu</button></nav></div></header><main class="css-uzlwne"><header class="css-1mqbpxd"><img src="/logo-vertical.png" alt="Arwes's Logo Vertical"><p>Futuristic Sci-Fi UI Web Framework</p><p><small>Work in progress of the project latest version</small></p></header><nav class="css-m6vcm"><a href="https://playground.arwes.dev" target="playground">Playground</a><a href="https://version1-breakpoint1.arwes.dev" target="version1-breakpoint1">Prev Version</a><a href="https://next.arwes.dev">Next Version</a></nav></main><footer class="css-1orxwfc"><div class="css-e000y6"><div class="css-m6vcm"><a href="https://github.com/arwes/arwes" target="github" rel="noreferrer">v<!-- -->1.0.0-alpha.19</a><a href="https://next.arwes.dev">Next</a></div><div class="css-m6vcm"><a href="https://discord.gg/s5sbTkw" target="discord" rel="noreferrer">Discord</a><a href="https://twitter.com/arwesjs" target="twitter" rel="noreferrer">Twitter</a><a href="https://github.com/arwes/arwes" target="github" rel="noreferrer">GitHub</a></div></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
   
-  .card_title {
-    font-weight: 700;
-    animation: text-glow 1.1s ease-in-out infinite alternate;
-  }
   
-  .separator {
-    height: 1px;
-    width: 100%;
-    background-color: $primary;
-    margin: 20px 0;
-    box-shadow: 0 0 10px $primary;
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   }
-  
-  .card_content {
-    text-shadow: 0px 0px 5px rgba(255,255,255,.2);
-  }
-}
-
-.card-border {
-  filter: drop-shadow(0px 0px 3px $primary);
-}
-
-.card-2 {
-  background: rgba($primary-dark, 0.2);
-  width: 600px;
-  height: 300px;
-  padding: 20px;
-  box-shadow: inset 0 0 10px $primary, 0 0 20px $primary;
-  border: 2px solid $primary-dark;
-  
-  .card_title {
-    font-weight: 700;
-    animation: text-glow 1s ease-in-out infinite alternate;
-  }
-  
-  .separator {
-    height: 1px;
-    width: 100%;
-    background-color: $primary;
-    margin: 20px 0;
-    box-shadow: 0 0 10px $primary;
-  }
-  
-  .card_content {
-    text-shadow: 0px 0px 5px rgba(255,255,255,.2);
-  }
-}
-
-@keyframes text-glow {
-  from {
-    text-shadow: 0 0 1px $primary;
-  }
-  to {
-    text-shadow: 0 0 7px $primary;
-  }
-}
-
-.diagonal-gridlines {
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba($primary-dark, .1),
-    rgba($primary-dark, .1) 2px,
-    rgba($primary, .02) 2px,
-    rgba($primary, .02) 10px
-  ),
-  linear-gradient(135deg, transparent, rgba($primary, 0.2));
-}
-  </style>
-</head>
-<body>
-<div class="main-container">
-  <div class="card-2">
-    <div class="card_title">
-      Alarms over time
-    </div>
-    <div class="separator"></div>
-    <div class="card_content">
-      <div class="alarm">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa error obcaecati magni suscipit corporis odio facere quam excepturi, autem omnis repudiandae est pariatur quidem sit earum laboriosam, corrupti maxime deserunt.
-      </div>
-    </div>
-  </div>
-  <div class="card-border">
-    <div class="card ">
-      <div class="card_title">
-        Alarms over time
-      </div>
-      <div class="separator"></div>
-      <div class="card_content">
-        <div class="alarm">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa error obcaecati magni suscipit corporis odio facere quam excepturi, autem omnis repudiandae est pariatur quidem sit earum laboriosam, corrupti maxime deserunt.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-<footer>
-  - a pen by Sebas Alvarez
-</footer>
-</html>
+  if (typeof ga === "function") {
+    ga('create', 'UA-50433259-2', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-3e2e60bb19f034fcea1b.js"],"app":["/app-102c02344435aad4ebfd.js"],"component---src-pages-404-js":["/component---src-pages-404-js-0ac1a5c470eff706aace.js"],"component---src-pages-community-code-of-conduct-mdx":["/component---src-pages-community-code-of-conduct-mdx-37a0f69a07207965d5ce.js"],"component---src-pages-community-mdx":["/component---src-pages-community-mdx-843f0aea89fb12615d75.js"],"component---src-pages-design-mdx":["/component---src-pages-design-mdx-81b3ed1e30bb3e711652.js"],"component---src-pages-develop-animation-managers-mdx":["/component---src-pages-develop-animation-managers-mdx-8bd2b78eb68c72a6d9bd.js"],"component---src-pages-develop-animation-mdx":["/component---src-pages-develop-animation-mdx-611604283c66251e58a9.js"],"component---src-pages-develop-animation-nesting-mdx":["/component---src-pages-develop-animation-nesting-mdx-22043a50a0deddd07196.js"],"component---src-pages-develop-core-mdx":["/component---src-pages-develop-core-mdx-da9def89580656117f98.js"],"component---src-pages-develop-design-breakpoints-mdx":["/component---src-pages-develop-design-breakpoints-mdx-dea42a94f03cfbe43de1.js"],"component---src-pages-develop-design-mdx":["/component---src-pages-develop-design-mdx-8af14bccc730a4150ffa.js"],"component---src-pages-develop-design-multipliers-mdx":["/component---src-pages-develop-design-multipliers-mdx-ad0e4308c2869710c114.js"],"component---src-pages-develop-design-palette-mdx":["/component---src-pages-develop-design-palette-mdx-f9a691aba3e0d02aeac9.js"],"component---src-pages-develop-mdx":["/component---src-pages-develop-mdx-7645908185b9483e3583.js"],"component---src-pages-develop-sounds-accessibility-mdx":["/component---src-pages-develop-sounds-accessibility-mdx-25d45fbe6ba875856e85.js"],"component---src-pages-develop-sounds-categories-mdx":["/component---src-pages-develop-sounds-categories-mdx-daa6e3725e54f067be66.js"],"component---src-pages-develop-sounds-mdx":["/component---src-pages-develop-sounds-mdx-cafccb84376a3ed31da1.js"],"component---src-pages-index-js":["/component---src-pages-index-js-2035d69cc535f91812a1.js"],"component---src-pages-project-changelog-mdx":["/component---src-pages-project-changelog-mdx-0407571e6984c90a1256.js"],"component---src-pages-project-contributing-architecture-mdx":["/component---src-pages-project-contributing-architecture-mdx-646d5e8c30164c058ac3.js"],"component---src-pages-project-contributing-mdx":["/component---src-pages-project-contributing-mdx-561fccf2548772d2519d.js"],"component---src-pages-project-contributing-playground-mdx":["/component---src-pages-project-contributing-playground-mdx-8a8cdeecc2999bc55c7a.js"],"component---src-pages-project-contributing-website-mdx":["/component---src-pages-project-contributing-website-mdx-58eebcb1d2238eb84470.js"],"component---src-pages-project-contributing-workflow-mdx":["/component---src-pages-project-contributing-workflow-mdx-92ea0120ad4c21351366.js"],"component---src-pages-project-faq-mdx":["/component---src-pages-project-faq-mdx-e691d179a7b76aee3668.js"],"component---src-pages-project-guidelines-events-mdx":["/component---src-pages-project-guidelines-events-mdx-3265412ffcea1abf15d5.js"],"component---src-pages-project-guidelines-mdx":["/component---src-pages-project-guidelines-mdx-b4df4fc85a6d81d864aa.js"],"component---src-pages-project-guidelines-states-mdx":["/component---src-pages-project-guidelines-states-mdx-16feeab47a5cbce2d96c.js"],"component---src-pages-project-guidelines-systems-mdx":["/component---src-pages-project-guidelines-systems-mdx-ab6f9ed7b2dafbd7a928.js"],"component---src-pages-project-mdx":["/component---src-pages-project-mdx-883879ff544863a89e79.js"],"component---src-pages-project-purpose-mdx":["/component---src-pages-project-purpose-mdx-a0e6107207a7c1400f54.js"],"component---src-pages-project-roadmap-mdx":["/component---src-pages-project-roadmap-mdx-0c925f25cda8cce50cda.js"]};/*]]>*/</script><script src="/polyfill-3e2e60bb19f034fcea1b.js" nomodule=""></script><script src="/component---src-pages-index-js-2035d69cc535f91812a1.js" async=""></script><script src="/app-102c02344435aad4ebfd.js" async=""></script><script src="/f0e45107-2f7f42f9895a03e32992.js" async=""></script><script src="/framework-0e20591e029376e243f5.js" async=""></script><script src="/webpack-runtime-f9accf5c376b2764d32d.js" async=""></script></body>
