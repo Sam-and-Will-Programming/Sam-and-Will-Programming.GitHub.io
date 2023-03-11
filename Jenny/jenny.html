@@ -1,52 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>terminal</title>
-    <style>
-        * {
-            box-sizing:border-box;
-            padding:0;
-            margin:0;
-            font-family:sans-serif;
-        }
-        body {
-            background-color:#000
-        }
-        .line {
-            position:relative;
-            color:#fff;
-            font-size:18px;
-            padding:10px;
-        }
-        .line::after {
-            position:absolute;
-            content:'';
-            background-color:#fff;
-            height:20px;
-            width:15px;
-            animation:blink 1s step-end infinite;
-            margin:0 2px
-        }
-        @keyframes blink {
-            0% {
-                opacity:0
-            }
-            50% {
-                opacity:1
-            }
-        }
-
-
-
-    </style>
+    <meta name="description" content="Simple terminal look website about mohammed.sh">
+    <meta name="author" content="mohammed shajahan">
+    <meta name="keywords" content="terminal, terminal website, termux, termux website, mohammed.sh, 
+        mohammedsh.com, mohammed-sh-terminal, terminal mohammedsh.com, 
+        terminal mohammedsh, mohammedsh terminal, mohammedshajahan7">
+    <title>[Jenny@server00001 ~]$</title>
+    
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./scripts/commands.js"></script>
+    <script src="./scripts/App.js"></script>
 </head>
 <body>
-    
-<div class="line">
-    Hello Terminal ....
-</div>
-</body>
-</html>
+    <div id="root">
+        <div id="terminal"><div class="type"><p class="path">[<span class="user">Jenny</span><span class="at">@</span>server00001<span class="tilde"> ~</span>]$</p><input></div></div>
+    </div>
+
+</body><div id="vimeo-record-extension"></div></html>
