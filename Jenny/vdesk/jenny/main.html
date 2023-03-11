@@ -1,0 +1,216 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/materialize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/materialize.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/intro.js"></script>
+  <link rel="stylesheet" href="../../js/introjs.css">
+<style>
+  #screen-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 1) 120%);
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    bottom: 0;
+    z-index: -1;
+  }
+</style></head>
+
+
+<body>
+  <main id="app">
+    <section class="applications-wrapper">
+    <div id="settingsPanel" class="">
+      <div id="options" class="tour-step3">
+        <div class="background">
+          <div id="swipe-1" class="col s12 carousel-item">
+            <h2>{{ Appearance }}</h2>
+            <ul>
+              <li>
+                <form action="#" class="backgrounds-container">
+                  <p>
+                    <label>
+                      <input id="video-background-btn" type="checkbox" class="filled-in">
+                      <span>{{ moodBackGroundText }}</span>
+                    </label>
+                  </p>
+                </form>
+                <ul id="backgrounds-submenu">
+                  <li>
+                    <form id="activeBackground" action="#">
+                      <p>
+                        <label>
+                          <input id="disabled-btn" type="radio" name="activeBackground" class="filled-in">
+                          <span>{{ disabledText }}</span>
+                        </label>
+                      </p>
+                      <p v-for="video in videos">
+                        <label>
+                          <input v-bind:id="video.replace(' ', '-') + '-btn'" type="radio" name="activeBackground" class="filled-in">
+                          <span>{{ video }}</span>
+                        </label>
+                      </p>
+                    </form>
+                  </li>
+                </ul>
+          </li></ul></div>
+          <div id="swipe-2" class="col s12 carousel-item">
+            <h2>{{ Behavior }}</h2>
+            <ul>
+              <li>
+                <div class="switch">
+                  <label class="text-color">
+                    <input id="auto-tile-btn" type="checkbox">
+                    <span class="lever"></span>
+                    {{ tileText }}
+                  </label>
+                </div>
+              </li>
+              <h2>{{ workspaceText }}</h2>
+              <p class="text-color">{{ workspaceDescription }}</p>
+              <div class="workspace">
+                <label>1</label>
+                <input id="workspace1" type="text" class="validate">
+              </div>
+              <div class="workspace">
+                <label>2</label>
+                <input id="workspace2" type="text" class="validate">
+              </div>
+              <div class="workspace">
+                <label>3</label>
+                <input id="workspace3" type="text" class="validate">
+              </div>
+              <div class="workspace">
+                <label>4</label>
+                <input id="workspace4" type="text" class="validate">
+              </div>
+              <li>
+          </li></ul></div>
+          <div id="swipe-3" class="col s12 carousel-item">
+            <h2>{{ System }}</h2>
+            <ul>
+              <li>
+                <a class=" text-color" id="defaults-btn" href="#!">
+                  <img id="restore-icon-btn" v-bind:src="restoreBtnIcon">
+                  {{ restoreText }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="swipe-4" class="col s12 carousel-item">
+            <h2>{{ devToolsText }}</h2>
+            <ul id="devtools">
+              <li>
+                <form action="#">
+                  <p>
+                    <label>
+                      <input id="inspector-btn" type="checkbox" class="filled-in">
+                      <span>{{ inspectorText }}</span>
+                    </label>
+                  </p>
+                </form>
+              </li>
+              <h2>{{ experimentalFeaturesText }}</h2>
+          </ul></div>
+        </div>
+        
+      </div>
+      <section id="Settings">
+        <div class="search">
+
+          <ul id="tabs-swipe" class="tabs">
+            <li class="tab col s3"><a draggable="false" class="active" href="#swipe-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M2 4.007C2 3.45 2.455 3 2.992 3h18.016c.548 0 .992.45.992 1.007V17H2V4.007zM1 19h22v2H1v-2z"></path>
+                </svg>
+              </a></li>
+            <li class="tab col s3"><a draggable="false" href="#swipe-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zM13 3h8v8h-8V3zm0 10h8v8h-8v-8z"></path>
+                </svg>
+              </a></li>
+            <li class="tab col s3"><a draggable="false" href="#swipe-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M12 1l9.5 5.5v11L12 23l-9.5-5.5v-11L12 1zm0 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                </svg>
+              </a></li>
+            <li class="tab col s3"><a draggable="false" href="#swipe-4" id="devtools-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm13.464 12.536L20 12l-3.536-3.536L15.05 9.88 17.172 12l-2.122 2.121 1.414 1.415zM6.828 12L8.95 9.879 7.536 8.464 4 12l3.536 3.536L8.95 14.12 6.828 12zm4.416 5l3.64-10h-2.128l-3.64 10h2.128z"></path>
+                </svg> </a></li>
+          </ul>
+
+          <img class="searchSettingsIcon" v-bind:src="searchBtnIcon">
+          <a href="#" draggable="false"><img draggable="false" class="appMenuIcon" v-bind:src="appMenuIcon"></a>
+          <a id="info" draggable="false" class="modal-trigger text-color" href="#about" data-target="about">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"></path>
+            </svg>
+          </a>
+          <input type="text" v-model="searchSettings">
+      </div>
+        <span class="settings-grid"></span>
+      </section>
+    </div>  
+      <div id="apps-container">
+        <ul id="categories-submenu">
+          <li>
+            <form id="activeCategories" action="#">
+              <p v-for="(value, key) in categories" v-if="key!='Settings'">
+                <label>
+                  <input v-bind:id="key.replace(/\s/g, '') + '-btn'" type="checkbox" class="filled-in">
+                  <span>{{ key }}</span>
+                </label>
+              </p>
+            </form>
+          </li>
+        </ul>        
+        <div class="arrow-container">
+          <img draggable="false" class="arrowUp" v-bind:src="arrowUp">
+          <img draggable="false" class="arrowDown" v-bind:src="arrowDown">
+        </div>
+        <span id="Applications" class="grid"></span>
+        <div id="app-search" class="search">
+          <img class="searchApplicationsIcon" v-bind:src="searchBtnIcon">
+          <a draggable="false" href="#"><img draggable="false" class="appSettingsIcon" v-bind:src="appSettingsIcon"></a>
+          <a draggable="false" href="#"><img draggable="false" class="categorySettingsIcon" v-bind:src="categorySettingsIcon"></a>
+          <input type="text" v-model="searchApplications">
+        </div>
+        </div></section>
+          
+    <video id="video-background" loop="" autoplay="" muted=""></video>
+    <div id="about" class="modal">
+      <img class="logo" src="../../images/logo.svg">
+      <div class="modal-content">
+        <h4>{{ aboutTitle }}</h4>
+        <p>
+          </p><p>{{ aboutAuthor }}</p>
+          <p>{{ aboutLicense }}</p>
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        {{ warranty }}
+      </div>
+    </div>
+    <div id="screen-overlay"></div>
+    <div id="floating-items">
+      <div id="clock">
+        <div id="time"></div>
+        <div id="date"></div>
+      </div>
+    </div>
+  </main>
+  <div id="tour">
+    <div class="tour-step1"></div>
+    <div class="tour-step2"></div>
+  </div>
+
+</body></html>
