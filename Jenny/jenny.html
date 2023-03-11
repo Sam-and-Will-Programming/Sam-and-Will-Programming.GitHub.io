@@ -1,21 +1,75 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simple terminal look website about mohammed.sh">
-    <meta name="author" content="mohammed shajahan">
-    <meta name="keywords" content="terminal, terminal website, termux, termux website, mohammed.sh, 
-        mohammedsh.com, mohammed-sh-terminal, terminal mohammedsh.com, 
-        terminal mohammedsh, mohammedsh terminal, mohammedshajahan7">
-    <title>[Jenny@server00001 ~]$</title>
-    
-    <link rel="stylesheet" href="https://terminal-mohammedsh.vercel.app/styles/style.css">
-    <script href="https://terminal-mohammedsh.vercel.app/scripts/commands.js"></script>
-    <script href="https://terminal-mohammedsh.vercel.app/scripts/App.js"></script>
-</head>
-<body>
-    <div id="root">
-        <div id="terminal"><div class="type"><p class="path">[<span class="user">Jenny</span><span class="at">@</span>server00001<span class="tilde"> ~</span>]$</p><input></div></div>
-    </div>
+    <title>Document</title>
 
-</body><div id="vimeo-record-extension"></div></html>
+
+</head>
+
+<body>
+
+
+    <script>
+    const target = document.body
+Object.assign(target.style, {
+    fontFamily: "Helvetica, Arial, sans-serif",
+    backgroundColor: "black",
+    color: "white"
+})
+
+let htmlTerminalAutoScroll = true
+
+let htmlTerminalStyles = {
+    padding: "5px 10px"
+}
+
+function log(message, styles = {}) {
+    let box = writeLine(message)
+    Object.assign(box.style, htmlTerminalStyles, styles)
+}
+
+function notice(message, styles = {}) {
+    log(message,
+        Object.assign({
+            color: "aqua"
+        }, styles))
+}
+
+function error(message, styles = {}) {
+    log(message,
+        Object.assign({
+            color: "tomato"
+        }, styles))
+}
+
+function warn(message, styles = {}) {
+    log(message,
+        Object.assign({
+            color: "gold"
+        }, styles))
+}
+
+function writeLine(message) {
+    let messageBox = document.createElement("div")
+    messageBox.className = "cmd-message-box"
+    messageBox.innerHTML = message
+    target.appendChild(messageBox)
+    if (htmlTerminalAutoScroll)
+        messageBox.scrollIntoView({ behavior: "smooth" })
+    return messageBox
+}
+
+    </script>
+    <script>
+        log("Normal text!")
+        notice("Normal text!")
+        warn("Test warning!")
+        error("Test error!")
+    </script>
+</body>
+
+</html>
