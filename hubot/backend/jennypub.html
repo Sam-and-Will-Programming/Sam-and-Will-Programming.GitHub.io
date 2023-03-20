@@ -1,0 +1,357 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async="" src="//www.google-analytics.com/analytics.js"></script><script src="/cdn-cgi/apps/head/ARf53_7CZrph6eMZGwgXpTF2-tk.js"></script><link rel="icon" href="https://demo.opensource-socialnetwork.org/themes/goblue/images/favicon.ico?ossn_cache=8ddc3567" type="image/x-icon">	
+    <title>Dashboard : Jenny Backend</title>
+    
+    <!-- 
+	Open Source Social Network (Ossn) https://www.opensource-socialnetwork.org/     
+	OpenTeknik LLC (https://www.openteknik.com/)
+	-->
+   
+    
+<link rel="stylesheet" type="text/css" href="https://demo.opensource-socialnetwork.org/cache/css/1633433244/view/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://demo.opensource-socialnetwork.org/cache/css/1633433244/view/ossn.admin.default.css">
+<script src="https://demo.opensource-socialnetwork.org/cache/js/1633433244/view/ossn.en.language.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/vendors/jquery/jquery-3.6.0.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/vendors/tinymce/tinymce.min.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/components/OssnAutoPagination/vendors/jquery.scrolling.js?ossn_cache=8ddc3567"></script>
+<script src="https://demo.opensource-socialnetwork.org/vendors/Chartjs/Chart.min.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/vendors/Chartjs/chart.legend.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/cache/js/1633433244/view/opensource.socialnetwork.js"></script>
+<script src="https://demo.opensource-socialnetwork.org/cache/js/1633433244/view/ossn.admin.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,700,400">
+<script src="https://demo.opensource-socialnetwork.org/themes/goblue/vendors/bootstrap/js/bootstrap.min.js?v5"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.css"><script>
+	$(document).ready(function() {
+		$('body').on('click', function(e) {
+			if($('#master-moji .emojii-container-main').is(':visible') && e.target.className != 'ossn-chat-icon-smile' && e.target.className != 'fa fa-smile'  && e.target.className != 'emojii' && e.target.innerHTML != '😉') {
+				$('#master-moji .emojii-container-main').hide();
+			}
+		});
+	});
+</script>
+    <script>
+         	
+	Ossn.site_url = 'https://demo.opensource-socialnetwork.org/';
+	Ossn.Config = {"token":{"ossn_ts":1679332333,"ossn_token":"82146ba5fa188e4ed56fe0a7f14515f78e3cfee424f5734432c0b1f6cf055759"},"cache":{"last_cache":"8ddc3567","ossn_cache":"1"}};
+	Ossn.Init();
+
+    </script>
+    <script>
+        tinymce.init({
+            toolbar: "bold italic underline alignleft aligncenter alignright bullist numlist image media link unlink emoticons autoresize fullscreen insertdatetime print spellchecker preview",
+            selector: '.ossn-editor',
+            plugins: "code image media link emoticons fullscreen insertdatetime print spellchecker preview",
+            convert_urls: false,
+            relative_urls: false,
+            language: "en",
+		content_css: Ossn.site_url + 'css/view/bootstrap.min.css'
+        });
+    </script>
+
+</head>
+<body data-new-gr-c-s-check-loaded="14.1101.0" data-gr-ext-installed="">
+	<div class="ossn-page-loading-annimation" style="display: none;">
+    		<div class="ossn-page-loading-annimation-inner">
+            	<div class="ossn-loading"></div>
+            </div>
+    </div>
+
+	<div class="ossn-halt ossn-light"></div>
+	<div class="ossn-message-box"></div>
+	<div class="ossn-viewer" style="display:none"></div>
+    
+	<div class="header">
+    	<div class="container">
+        
+        	<div class="row">
+			<div class="col-6 col-md-6">
+            			            			<img src="https://demo.opensource-socialnetwork.org/themes/goblue/images/logo_admin.jpg?ossn_cache=8ddc3567">
+                         
+            		</div>
+                            	<div class="col-6 col-md-6 header-dropdown">
+					<ul class="navbar-right">	
+                        <div class="dropdown">
+                        	<a id="dLabel" role="button" data-bs-toggle="dropdown" data-bs-target="#"><i class="fa fa-bars fa-3"></i></a> 
+    						<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+             					 <li><a class="dropdown-item" href="https://demo.opensource-socialnetwork.org/action/admin/logout?ossn_ts=1679332333&amp;ossn_token=82146ba5fa188e4ed56fe0a7f14515f78e3cfee424f5734432c0b1f6cf055759">Log out</a></li>
+           					 </ul>
+      		    		</div>
+                     </ul>   
+           		</div>
+                        	</div>        
+        
+        </div>
+    </div>
+    		<div class="topbar-menu">
+    	  <nav class="navbar navbar-expand-lg navbar-default navbar-admin-second" role="navigation">
+    <div class="container">
+   			 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+     			 <i class="fa fa-bars"></i>
+   			 </button>
+        		<div class="collapse navbar-collapse" id="navbarNav">
+            		<ul class="nav navbar-nav">
+            			<li class="nav-item"><a class="nav-link menu-topbar-admin-home" href="https://demo.opensource-socialnetwork.org/administrator">Dashboard</a></li><li class="nav-item"><a class="nav-link menu-topbar-admin-help" href="https://www.opensource-socialnetwork.org/">Help</a></li><li class="nav-item"><a target="_blank" class="nav-link menu-topbar-admin-support" href="https://www.openteknik.com/">Premium Version</a></li><li class="nav-item"><a class="nav-link menu-topbar-admin-viewsite" href="https://demo.opensource-socialnetwork.org/">View Site</a></li><li class="nav-item dropdown">
+									  <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Configure</a>
+									  <ul class="dropdown-menu multi-level"><li><a class="dropdown-item menu-topbar-admin-ossnwall" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnWall">OssnWall</a></li><li><a class="dropdown-item menu-topbar-admin-ossnnotifications" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnNotifications">Notifications</a></li><li><a class="dropdown-item menu-topbar-admin-ossnads" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnAds">Ads Manager</a></li><li><a class="dropdown-item menu-topbar-admin-ossnsitepages" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnSitePages">Site Pages</a></li><li><a class="dropdown-item menu-topbar-admin-ossnsmilies" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnSmilies">Smilies</a></li><li><a class="dropdown-item menu-topbar-admin-announcement" href="https://demo.opensource-socialnetwork.org/administrator/component/Announcement">Site Announcement</a></li><li><a class="dropdown-item menu-topbar-admin-ossngiphy" href="https://demo.opensource-socialnetwork.org/administrator/component/OssnGiphy">Giphy</a></li></ul></li>            		</ul>
+            		<ul class="nav navbar-nav ms-auto">
+						 <li class="nav-item dropdown"><a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Components</a><ul class="dropdown-menu multi-level"><li><a priority="100" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/components">Components</a></li><li><a priority="101" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/com_installer">Installer</a></li></ul></li><li class="nav-item dropdown"><a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Themes</a><ul class="dropdown-menu multi-level"><li><a priority="102" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/themes">Themes</a></li><li><a priority="103" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/theme_installer">Installer</a></li><li><a priority="109" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/settings/goblue">GoBlue</a></li></ul></li><li class="nav-item dropdown"><a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Site Settings</a><ul class="dropdown-menu multi-level"><li><a priority="104" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/settings/basic">Basic</a></li><li><a priority="105" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/cache">Cache</a></li></ul></li><li class="nav-item dropdown"><a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">User Manager</a><ul class="dropdown-menu multi-level"><li><a priority="106" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/users">List Users</a></li><li><a priority="107" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/adduser">Add User</a></li><li><a priority="108" class="dropdown-item " href="https://demo.opensource-socialnetwork.org/administrator/unvalidated_users">Unvalidated Users</a></li></ul></li>           		 	</ul>                    
+        		</div>
+    		</div>
+</nav>
+    	</div>
+    	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	 <div class="ossn-layout-admin">
+	<div class="ossn-system-messages">
+	   <div class="row">
+	  	 <div class="col-md-12">
+       			<div class="ossn-system-messages-inner" style="display: none;"></div>
+	   	</div>
+	</div>
+</div>    
+    
+    <div class="row">
+    	<div class="col-md-12 contents">
+			<div class="page-title">Dashboard</div>
+    	 	<div class="ossn-admin-dsahboard">
+	<div class="row">
+    
+    	<div class="col-md-12 admin-dashboard-item">
+        	<div class="admin-dashboard-box">
+        		<div class="admin-dashboard-title">Users</div>
+            	<div class="admin-dashboard-contents">
+            			<canvas id="users-count-graph" width="1258" height="281" style="width: 1114px; height: 249px;"></canvas>
+                        <div id="usercount-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(151, 187, 205); border-color: rgba(151, 187, 205, 0.2);"></div>2023</div><div class="title"><div class="color-sample" style="background-color: rgb(220, 220, 220); border-color: rgba(220, 220, 220, 0.2);"></div>2021</div></div>
+           	 	</div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="row margin-top-10">
+            <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box">
+        		<div class="admin-dashboard-title">Users (28)</div>
+            	<div class="admin-dashboard-contents center admin-dashboard-fixed-height">
+               			<canvas id="users-classified-graph" width="282" height="158" style="width: 250px; height: 140px;"></canvas>
+                        <div id="userclassified-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(237, 0, 140); border-color: rgb(237, 0, 140);"></div>Female</div><div class="title"><div class="color-sample" style="background-color: rgb(1, 173, 239); border-color: rgb(1, 173, 239);"></div>Male</div></div>         			
+           	 	</div>
+            </div>
+        </div>
+
+        <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box">
+        		<div class="admin-dashboard-title">Unvalidated Users</div>
+            	<div class="admin-dashboard-contents center admin-dashboard-fixed-height">
+                        <div class="text center">
+                        	21                        </div>                     
+           	 	</div>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box">
+        		<div class="admin-dashboard-title">Users Online (2)</div>
+            	<div class="admin-dashboard-contents center admin-dashboard-fixed-height">
+                        	<canvas id="onlineusers-classified-graph" width="282" height="158" style="width: 250px; height: 140px;"></canvas>
+                            <div id="onlineuserclassified-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(237, 0, 140); border-color: rgb(237, 0, 140);"></div>Female</div><div class="title"><div class="color-sample" style="background-color: rgb(1, 173, 239); border-color: rgb(1, 173, 239);"></div>Male</div></div>     
+           	 	</div>
+            </div>
+        </div>
+                
+    </div>
+	
+    <div class="row">
+ 
+         <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">Components</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center">
+                        	27                        </div>                 
+           	 	</div>
+            </div>
+        </div>   
+ 
+         <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">Themes</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center">
+                            1                        </div>               
+           	 	</div>
+            </div>
+        </div>   
+ 
+          <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">My OSSN Files Version</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center">
+                            6.1                        </div>                     
+           	 	</div>
+            </div>
+        </div>   
+            
+    </div>
+    
+    <div class="row">
+          <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">Available Updates</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center avaiable-updates">6.6</div>                       
+           	 	</div>
+            </div>
+        </div>       
+    
+          <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">My OSSN Version</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center">
+                            6.1                        </div>                     
+           	 	</div>
+            </div>
+        </div>     
+          <div class="col-md-4 admin-dashboard-item">
+        	<div class="admin-dashboard-box admin-dashboard-box-small">
+        		<div class="admin-dashboard-title">Cache</div>
+            	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
+                        <div class="text center">
+                           	<a href="https://demo.opensource-socialnetwork.org/action/admin/cache/flush?ossn_ts=1679332333&amp;ossn_token=82146ba5fa188e4ed56fe0a7f14515f78e3cfee424f5734432c0b1f6cf055759" class="btn btn-primary">Flush Cache</a>
+                        </div>                    
+           	 	</div>
+            </div>
+        </div>   
+                    
+    </div>
+</div>
+
+<!-- <div class="ossn-message-developers">
+  <h2> News from Developers</h2>
+  Hi this is mesage from our site
+</div> -->
+
+
+<script>
+		/**
+		 * Get data for last two years
+		 */
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July","August","September","October","November","December"],
+			datasets : [
+									{
+					label: "2023",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",					
+					data : [0,0,11,0,0,0,0,0,0,0,0,0]				}	
+												, {
+					label: "2021",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [0,0,0,0,0,0,0,0,0,1,0,0]				}	
+							]
+		}
+		/**
+		 * Generate a graph on page load
+		 */		
+		$(document).ready(function(){
+			var ctx = document.getElementById("users-count-graph").getContext("2d");
+			var myLine = new Chart(ctx).Line(lineChartData, {
+				responsive: true,
+				maintainAspectRatio: false,
+			});
+			//don't you want lagends ? $arsalanshah
+			//comment line below if you want to hide legends
+			chart_js_legend(document.getElementById("usercount-lineLegend"),lineChartData);
+
+		});
+	</script><script>
+		/**
+		 * Get data for last two years
+		 * Translation for gender in dashboard users & users online #511		 
+		 */
+		var gdata = [
+{
+value: 3,
+color: '#ED008C',
+highlight: '#ED008C',
+label: 'Female'
+},
+{
+value: 25,
+color: '#01ADEF',
+highlight: '#01ADEF',
+label: 'Male'
+},
+			];
+			$(window).on('load', function(){
+				var chartjs = $('#users-classified-graph')[0].getContext("2d");
+				this.myPie = new Chart(chartjs).Pie(gdata);
+			    //don't you want lagends ? $arsalanshah
+				//comment line below if you want to hide legends
+				chart_js_legend($('#userclassified-lineLegend')[0],gdata);				
+			});
+	</script>
+<script>
+		/**
+		 * Get data for last two years
+		 * Translation for gender in dashboard users & users online #511
+		 */
+		var OnlineUsersPieData = [
+{
+value: 1,
+color: '#ED008C',
+highlight: '#ED008C',
+label: 'Female'
+},
+{
+value: 1,
+color: '#01ADEF',
+highlight: '#01ADEF',
+label: 'Male'
+},
+			];
+			$(window).on('load', function(){
+				var online_users_graph = $('#onlineusers-classified-graph')[0].getContext("2d");
+				this.OnlinemyPie = new Chart(online_users_graph).Pie(OnlineUsersPieData);
+			    //don't you want lagends ? $arsalanshah
+				//comment line below if you want to hide legends
+				chart_js_legend($('#onlineuserclassified-lineLegend')[0], OnlineUsersPieData);				
+			});			
+	</script>
+    	</div>
+	</div>
+</div>                </div>
+        </div>
+        
+        <!-- footer -->
+        <footer>
+      	  	<div class="row">
+        		<div class="col-md-6">
+ 				© COPYRIGHT 2023 <a href="https://demo.opensource-socialnetwork.org/">Open Source Social Network</a>            			
+           	 	</div>
+                <div class="col-md-6 text-right">
+                	 POWERED <a href="http://www.opensource-socialnetwork.org">OPEN SOURCE SOCIAL NETWORK</a>                </div>
+        	</div>
+        </footer>
+        <!-- /footer -->
+    </div> <!-- /container -->
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
