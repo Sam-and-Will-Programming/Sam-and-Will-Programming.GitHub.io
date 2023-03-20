@@ -125,7 +125,7 @@
         	<div class="admin-dashboard-box">
         		<div class="admin-dashboard-title">Users</div>
             	<div class="admin-dashboard-contents">
-            			<canvas id="users-count-graph" width="1258" height="281" style="width: 1114px; height: 249px;"></canvas>
+            			<canvas id="users-count-graph" width="1055" height="281" style="width: 934px; height: 249px;"></canvas>
                         <div id="usercount-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(151, 187, 205); border-color: rgba(151, 187, 205, 0.2);"></div>2023</div><div class="title"><div class="color-sample" style="background-color: rgb(220, 220, 220); border-color: rgba(220, 220, 220, 0.2);"></div>2021</div></div>
            	 	</div>
             </div>
@@ -136,7 +136,7 @@
     <div class="row margin-top-10">
             <div class="col-md-4 admin-dashboard-item">
         	<div class="admin-dashboard-box">
-        		<div class="admin-dashboard-title">Users (49)</div>
+        		<div class="admin-dashboard-title">Users (28)</div>
             	<div class="admin-dashboard-contents center admin-dashboard-fixed-height">
                			<canvas id="users-classified-graph" width="282" height="158" style="width: 250px; height: 140px;"></canvas>
                         <div id="userclassified-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(237, 0, 140); border-color: rgb(237, 0, 140);"></div>Female</div><div class="title"><div class="color-sample" style="background-color: rgb(1, 173, 239); border-color: rgb(1, 173, 239);"></div>Male</div></div>         			
@@ -160,7 +160,14 @@
         		<div class="admin-dashboard-title">Users Online (2)</div>
             	<div class="admin-dashboard-contents center admin-dashboard-fixed-height">
                         	<canvas id="onlineusers-classified-graph" width="282" height="158" style="width: 250px; height: 140px;"></canvas>
-                            <div id="onlineuserclassified-lineLegend" class="charjs-legend"><div class="title"><div class="color-sample" style="background-color: rgb(237, 0, 140); border-color: rgb(237, 0, 140);"></div>Female</div><div class="title"><div class="color-sample" style="background-color: rgb(1, 173, 239); border-color: rgb(1, 173, 239);"></div>Male</div></div>     
+                            <div id="onlineuserclassified-lineLegend" class="charjs-legend">
+				    <div class="title">
+					    <div class="color-sample" style="background-color: rgb(237, 0, 140); border-color: rgb(237, 0, 140);">
+					    </div>Female</div>
+				    <div class="title">
+					    <div class="color-sample" style="background-color: rgb(1, 173, 239); border-color: rgb(1, 173, 239);">
+					    </div>Male</div>
+			</div>     
            	 	</div>
             </div>
         </div>
@@ -191,7 +198,7 @@
  
           <div class="col-md-4 admin-dashboard-item">
         	<div class="admin-dashboard-box admin-dashboard-box-small">
-        		<div class="admin-dashboard-title">My OSSN Files Version</div>
+        		<div class="admin-dashboard-title">My Hubot Backup Version</div>
             	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
                         <div class="text center">
                             6.1                        </div>                     
@@ -204,19 +211,19 @@
     <div class="row">
           <div class="col-md-4 admin-dashboard-item">
         	<div class="admin-dashboard-box admin-dashboard-box-small">
-        		<div class="admin-dashboard-title">Available Updates</div>
+        		<div class="admin-dashboard-title">Update</div>
             	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
-                        <div class="text center avaiable-updates">6.6</div>                       
+                        <div class="text center avaiable-updates">0.00.19</div>                       
            	 	</div>
             </div>
         </div>       
     
           <div class="col-md-4 admin-dashboard-item">
         	<div class="admin-dashboard-box admin-dashboard-box-small">
-        		<div class="admin-dashboard-title">My OSSN Version</div>
+        		<div class="admin-dashboard-title">My Hubot Version</div>
             	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
                         <div class="text center">
-                            6.1                        </div>                     
+                            6   </div>                     
            	 	</div>
             </div>
         </div>     
@@ -225,7 +232,7 @@
         		<div class="admin-dashboard-title">Cache</div>
             	<div class="admin-dashboard-contents admin-dashboard-contents-small center admin-dashboard-fixed-height">
                         <div class="text center">
-                           	<a href="https://demo.opensource-socialnetwork.org/action/admin/cache/flush?ossn_ts=1679332333&amp;ossn_token=82146ba5fa188e4ed56fe0a7f14515f78e3cfee424f5734432c0b1f6cf055759" class="btn btn-primary">Flush Cache</a>
+                           	<a href="/flush_cache.html" class="btn btn-primary">Flush Cache</a>
                         </div>                    
            	 	</div>
             </div>
@@ -356,4 +363,5 @@ label: 'Male'
 
 
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
 </body><div id="vimeo-record-extension"></div></html>
